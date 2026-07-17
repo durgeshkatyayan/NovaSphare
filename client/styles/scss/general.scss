@@ -1,0 +1,36 @@
+html {
+  background-color: #f5f5f5;
+  font-size: 16px;
+}
+
+a {
+  color: #209cee;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.section {
+  background-color: transparent;
+}
+
+.box {
+  border-radius: 2px;
+}
+
+.select::after {
+  border-color: '#4a4a4a';
+}
+
+.card-footer-item {
+  cursor: pointer;
+  &:hover {
+    background-color: #e5e5e5;
+  }
+}
+
+// Bug in production
+.select select {
+  padding-right: 2.5em;
+}

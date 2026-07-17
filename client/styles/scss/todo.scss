@@ -1,0 +1,43 @@
+.todo-page {
+  .todo-section {
+    background-color: #f5f5f5;
+  }
+
+  .space-right {
+    margin-right: .75rem;
+  }
+
+  .title.is-1 {
+    color: '#4a4a4a';
+    margin-bottom: 20px;
+  }
+
+  .icon {
+    vertical-align: middle;
+
+    .fa {
+      text-align: left;
+      width: 21px;
+    }
+
+    .fa-pencil,
+    .fa-floppy-disk {
+      color: '#4a4a4a';
+    }
+
+    .fa-ban,
+    .fa-trash-can {
+      color: '#f14668';
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .confirm-modal {
+    .modal-content {
+      max-width: 400px;
+    }
+  }
+}
