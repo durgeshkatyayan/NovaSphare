@@ -17,7 +17,9 @@ app.use(express.static(assetFolder));
 app.use(bodyParser.json());
 
 configPassport(app, express);
-
+app.get('/all', (req, res) => {
+  res.send({ message: 'Server is running' });
+});
 app.use('/', routes);
 
 app.listen(port, () => console.log(`Server is listening on port ${port}`));
