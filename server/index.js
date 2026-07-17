@@ -9,11 +9,15 @@ require('./database');
 const configPassport = require('./passport/config');
 const routes = require('./routes/index');
 
-const assetFolder = path.resolve(__dirname, '../dist/');
+// const assetFolder = path.resolve(__dirname, '../dist/');
 const port = process.env.PORT || 3000;
 const app = express();
 
-app.use(express.static(assetFolder));
+app.use(express.static("dist"));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
 app.use(bodyParser.json());
 
 configPassport(app, express);
