@@ -6,7 +6,8 @@
   "scripts": {
     "build": "npm run build:prd",
     "build:prd": "cross-env NODE_ENV=production webpack --mode=production --config ./client/config/webpack.prd.config.js",
-   "start": "node server/index.js",
+    "build:dev": "cross-env NODE_ENV=development webpack --mode=development --config ./client/config/webpack.dev.config.js",
+    "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
     "start:server": "nodemon server/index.js",
     "start:client": "webpack serve --mode development --config ./client/config/webpack.dev.config.js",
     "lint": "eslint .",
@@ -130,8 +131,8 @@
     "mini-css-extract-plugin": "^2.7.6",
     "nodemon": "^3.0.1",
     "pre-commit": "^1.2.2",
-    "sass": "^1.69.5",
-    "sass-loader": "^13.3.2",
+    "sass": "^1.101.0",
+    "sass-loader": "^17.0.0",
     "style-loader": "^3.3.3",
     "supertest": "^6.3.3",
     "webpack-dev-server": "^4.15.2"

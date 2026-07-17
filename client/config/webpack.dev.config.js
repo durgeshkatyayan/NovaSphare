@@ -12,7 +12,8 @@ config.devServer = {
   port: 8083,
   proxy: {
     '/api': {
-      target: `http://localhost:${backendPort}`,
+      target: `https://novasphare.onrender.com`,
+      // target: `http://localhost:${backendPort}`,
       secure: false,
       changeOrigin: true,
     },
