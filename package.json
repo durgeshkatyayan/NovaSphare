@@ -4,7 +4,7 @@
   "description": "A full MERN stack boilerplate",
   "main": "server/index.js",
   "scripts": {
-    "build": "npm run build:prd",
+    "build": "webpack --mode production",
     "build:prd": "cross-env NODE_ENV=production webpack --mode=production --config ./client/config/webpack.prd.config.js",
     "build:dev": "cross-env NODE_ENV=development webpack --mode=development --config ./client/config/webpack.dev.config.js",
     "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
