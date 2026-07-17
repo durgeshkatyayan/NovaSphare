@@ -9,8 +9,7 @@ build
 # Test
 coverage
 
-# Environment
-.env*
+
 
 # NPM
 .npm
