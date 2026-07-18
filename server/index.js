@@ -9,13 +9,17 @@ require('./database');
 const configPassport = require('./passport/config');
 const routes = require('./routes/index');
 
-// const assetFolder = path.resolve(__dirname, '../dist/');
+const assetFolder = path.resolve(__dirname, '../dist/');
 const port = Number(process.env.PORT || 3101);
 const app = express();
 
-// app.use(express.static(assetFolder));
+app.use(express.static(assetFolder));
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, "../dist")));
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../dist/index.html"));
+});
 configPassport(app, express);
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
