@@ -3,18 +3,18 @@ import request from 'superagent';
 import { handleError, handleSuccess } from '_utils/api';
 
 export const postRegister = user =>
-  request.post('/api/auth/register')
+  request.post('https://your-render-app.onrender.com/api/auth/register')
     .send(user)
     .then(handleSuccess)
     .catch(handleError);
 
 export const postLogin = user =>
-  request.post('/api/auth/login')
+  request.post('https://your-render-app.onrender.com/api/auth/login')
     .send(user)
     .then(handleSuccess)
     .catch(handleError);
 
 export const postLogout = () =>
-  request.post('/api/auth/logout')
+  request.post('https://your-render-app.onrender.com/api/auth/logout')
     .then(handleSuccess)
     .catch(handleError);
