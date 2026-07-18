@@ -1,37 +1,35 @@
-const path = require('path');
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
-const bodyParser = require('body-parser');
-const express = require('express');
+require("./config/environment");
+require("./database");
 
-require('./config/environment');
-require('./database');
+const configPassport = require("./passport/config");
+const routes = require("./routes");
 
-const configPassport = require('./passport/config');
-const routes = require('./routes/index');
-
-const assetFolder = path.resolve(__dirname, '../dist/');
-const port = Number(process.env.PORT || 3101);
 const app = express();
+const port = process.env.PORT || 3101;
 
-app.use(express.static(assetFolder));
+// Allow frontend to access backend
+app.use(
+  cors({
+    origin: "*", // Replace "*" with your frontend URL in production
+    credentials: true,
+  })
+);
+
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "../dist")));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../dist/index.html"));
-});
 configPassport(app, express);
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok' });
+
+app.get("/health", (req, res) => {
+  res.json({ status: "ok" });
 });
-app.use('/', routes);
 
-app.listen(port, () => console.log(`Server is listening on port ${port}`))
-  .on('error', (error) => {
-    if (error.code === 'EADDRINUSE') {
-      console.error(`Port ${port} is already in use. Please stop the existing process or change PORT in server/.env.`);
-      process.exit(1);
-    }
+app.use("/", routes);
 
-    throw error;
-  });
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
