@@ -14,7 +14,7 @@ const port = process.env.PORT || 3101;
 // Allow frontend to access backend
 app.use(
   cors({
-    origin: ["https://novasphare.netlify.app", "http://localhost:3000"], // Replace with your frontend URL in production
+    origin: ["https://novasphare.netlify.app", "http://localhost:3000",'https://knsk.me/','*'], // Replace with your frontend URL in production
     credentials: true,
   })
 );
